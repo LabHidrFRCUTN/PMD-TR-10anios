@@ -90,14 +90,8 @@ var lyr_LimiteProvincial_5 = new ol.layer.Vector({
 lyr_GoogleMaps_0.setVisible(false);lyr_GoogleHybrid_1.setVisible(false);lyr_OpenTopomap_2.setVisible(false);lyr_PrecipitacionMaximaDiariaTR10aos_3.setVisible(false);lyr_Isohietas_TR10aos_4.setVisible(true);lyr_LimiteProvincial_5.setVisible(true);
 var layersList = [lyr_GoogleMaps_0,lyr_GoogleHybrid_1,lyr_OpenTopomap_2,lyr_PrecipitacionMaximaDiariaTR10aos_3,lyr_Isohietas_TR10aos_4,lyr_LimiteProvincial_5];
 lyr_PrecipitacionMaximaDiariaTR10aos_3.set('fieldAliases', {'P [mm]': 'P [mm]', 'Latitud': 'Latitud', 'Longitud': 'Longitud', });
-lyr_Isohietas_TR10aos_4.set('fieldAliases', {'P [mm]': 'P [mm]', });
-lyr_LimiteProvincial_5.set('fieldAliases', {'LAYER': 'LAYER', 'GM_TYPE': 'GM_TYPE', 'CLOSED': 'CLOSED', 'BORDER_STY': 'BORDER_STY', 'BORDER_COL': 'BORDER_COL', 'BORDER_WID': 'BORDER_WID', 'FILL_STYLE': 'FILL_STYLE', });
 lyr_PrecipitacionMaximaDiariaTR10aos_3.set('fieldImages', {'P [mm]': 'TextEdit', 'Latitud': 'TextEdit', 'Longitud': 'TextEdit', });
-lyr_Isohietas_TR10aos_4.set('fieldImages', {'P [mm]': 'TextEdit', });
-lyr_LimiteProvincial_5.set('fieldImages', {'LAYER': 'TextEdit', 'GM_TYPE': 'TextEdit', 'CLOSED': 'TextEdit', 'BORDER_STY': 'TextEdit', 'BORDER_COL': 'TextEdit', 'BORDER_WID': 'Range', 'FILL_STYLE': 'TextEdit', });
 lyr_PrecipitacionMaximaDiariaTR10aos_3.set('fieldLabels', {'P [mm]': 'inline label', 'Latitud': 'inline label', 'Longitud': 'inline label', });
-lyr_Isohietas_TR10aos_4.set('fieldLabels', {'P [mm]': 'inline label', });
-lyr_LimiteProvincial_5.set('fieldLabels', {'LAYER': 'no label', 'GM_TYPE': 'no label', 'CLOSED': 'no label', 'BORDER_STY': 'no label', 'BORDER_COL': 'no label', 'BORDER_WID': 'no label', 'FILL_STYLE': 'no label', });
 lyr_LimiteProvincial_5.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
