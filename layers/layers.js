@@ -87,7 +87,7 @@ var lyr_LimiteProvincial_5 = new ol.layer.Vector({
                 title: '<img src="styles/legend/LimiteProvincial_5.png" /> LimiteProvincial'
             });
 
-lyr_GoogleMaps_0.setVisible(false);lyr_GoogleHybrid_1.setVisible(false);lyr_OpenTopomap_2.setVisible(true);lyr_PrecipitacionMaximaDiariaTR10aos_3.setVisible(true);lyr_Isohietas_TR10aos_4.setVisible(true);lyr_LimiteProvincial_5.setVisible(true);
+lyr_GoogleMaps_0.setVisible(true);lyr_GoogleHybrid_1.setVisible(false);lyr_OpenTopomap_2.setVisible(false);lyr_PrecipitacionMaximaDiariaTR10aos_3.setVisible(true);lyr_Isohietas_TR10aos_4.setVisible(true);lyr_LimiteProvincial_5.setVisible(true);
 var layersList = [lyr_GoogleMaps_0,lyr_GoogleHybrid_1,lyr_OpenTopomap_2,lyr_PrecipitacionMaximaDiariaTR10aos_3,lyr_Isohietas_TR10aos_4,lyr_LimiteProvincial_5];
 lyr_PrecipitacionMaximaDiariaTR10aos_3.set('fieldAliases', {'P [mm]': 'P [mm]', 'Latitud': 'Latitud', 'Longitud': 'Longitud', });
 lyr_PrecipitacionMaximaDiariaTR10aos_3.set('fieldImages', {'P [mm]': 'TextEdit', 'Latitud': 'TextEdit', 'Longitud': 'TextEdit', });
