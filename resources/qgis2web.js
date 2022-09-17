@@ -69,14 +69,17 @@ var map = new ol.Map({
     overlays: [overlayPopup],
     layers: layersList,
     view: new ol.View({
-         maxZoom: 28, minZoom: 1
+         maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
+            code: 'EPSG:4326',
+            extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
+            units: 'degrees'})
     })
 });
 
 var layerSwitcher = new ol.control.LayerSwitcher({tipLabel: "Layers"});
 map.addControl(layerSwitcher);
 
-map.getView().fit([-9036400.826312, -7170963.903605, -5055545.922357, -2360157.837317], map.getSize());
+map.getView().fit([-63.634903, -32.473892, -62.263041, -31.780756], map.getSize());
 
 var NO_POPUP = 0
 var ALL_FIELDS = 1
@@ -117,7 +120,7 @@ var featureOverlay = new ol.layer.Vector({
 });
 
 var doHighlight = true;
-var doHover = true;
+var doHover = false;
 
 var highlight;
 var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -181,7 +184,7 @@ var onPointerMove = function(evt) {
         } else {
             currentFeatureKeys = currentFeature.getKeys();
             if (doPopup) {
-                popupText += '<li><table>';
+               popupText += '<li><table id="customers">';
                 for (var i=0; i<currentFeatureKeys.length; i++) {
                     if (currentFeatureKeys[i] != 'geometry') {
                         popupField = '';
@@ -225,7 +228,7 @@ var onPointerMove = function(evt) {
                     highlightStyle = new ol.style.Style({
                         image: new ol.style.Circle({
                             fill: new ol.style.Fill({
-                                color: "#ffff00"
+                                color: "#ff0033"
                             }),
                             radius: radius
                         })
@@ -236,7 +239,7 @@ var onPointerMove = function(evt) {
 
                     highlightStyle = new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: '#ffff00',
+                            color: '#ff0033',
                             lineDash: null,
                             width: featureWidth
                         })
@@ -245,7 +248,7 @@ var onPointerMove = function(evt) {
                 } else {
                     highlightStyle = new ol.style.Style({
                         fill: new ol.style.Fill({
-                            color: '#ffff00'
+                            color: '#ff0033'
                         })
                     })
                 }
@@ -324,18 +327,18 @@ var onSingleClick = function(evt) {
             } else {
                 currentFeatureKeys = currentFeature.getKeys();
                 if (doPopup) {
-                    popupText += '<li><table>';
+                   popupText += '<li><table id="customers">';
                     for (var i=0; i<currentFeatureKeys.length; i++) {
                         if (currentFeatureKeys[i] != 'geometry') {
                             popupField = '';
                             if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "inline label") {
-                                popupField += '<th>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + ':</th><td>';
-                            } else {
-                                popupField += '<td colspan="2">';
-                            }
-                            if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "header label") {
-                                popupField += '<strong>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + ':</strong><br />';
-                            }
+popupField += '<th>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + ':</th><td>';
+} else {
+popupField += '<td colspan="2">';
+}
+if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "header label") {
+popupField += '<strong>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + ':</strong><br />';
+}
                             if (layer.get('fieldImages')[currentFeatureKeys[i]] != "ExternalResource") {
                                 popupField += (currentFeature.get(currentFeatureKeys[i]) != null ? autolinker.link(currentFeature.get(currentFeatureKeys[i]).toLocaleString()) + '</td>' : '');
                             } else {
@@ -609,16 +612,16 @@ map.on("rendercomplete", function(evt) {
         var attribution = document.getElementsByClassName('ol-attribution')[0];
         var attributionList = attribution.getElementsByTagName('ul')[0];
         var firstLayerAttribution = attributionList.getElementsByTagName('li')[0];
-        var utnlabwebAttribution = document.createElement('li');
-        utnlabwebAttribution.innerHTML = '<a href="https://www.investigacion.frc.utn.edu.ar/hidraulica/">UTN FRC Laboratorio de Hidraulica</a> &middot; ';
-	   var qgis2webAttribution = document.createElement('li');
+        var labHidAttribution = document.createElement('li');
+        labHidAttribution.innerHTML = '<a href="https://www.investigacion.frc.utn.edu.ar/hidraulica/">UTN FRC - Lab. Hidraulica</a> &middot; ';        
+	var qgis2webAttribution = document.createElement('li');
         qgis2webAttribution.innerHTML = '<a href="https://github.com/tomchadwin/qgis2web">qgis2web</a> &middot; ';
         var olAttribution = document.createElement('li');
         olAttribution.innerHTML = '<a href="https://openlayers.org/">OpenLayers</a> &middot; ';
         var qgisAttribution = document.createElement('li');
         qgisAttribution.innerHTML = '<a href="https://qgis.org/">QGIS</a>';
-   attributionList.insertBefore(utnlabwebAttribution, firstLayerAttribution);
-        attributionList.insertBefore(qgis2webAttribution, firstLayerAttribution);
+	attributionList.insertBefore(labHidAttribution, firstLayerAttribution);        
+	attributionList.insertBefore(qgis2webAttribution, firstLayerAttribution);
         attributionList.insertBefore(olAttribution, firstLayerAttribution);
         attributionList.insertBefore(qgisAttribution, firstLayerAttribution);
         attributionComplete = true;

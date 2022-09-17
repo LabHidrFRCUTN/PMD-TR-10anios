@@ -76,3 +76,29 @@ th, td {
 #popup-content li {
     margin-bottom:0.25em;
 }
+#customers {
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+
+}
+
+#customers td, #customers th {
+border: 1px solid #000000;
+padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+padding-top: 10px;
+padding-bottom: 10px;
+background-color: #58D68D;
+color: white;
+min-width: 120px;
+}
+#json {
+font-size: 23px; 
+color: green;
+}
