@@ -7,9 +7,10 @@
 }
 
 .layer-switcher {
-        position: absolute;
-        top: 1px !important;
-        right: 50px;
+    position: absolute;
+    top: 3.5em;
+    right: 0.5em;
+    text-align: left;
 }
 
 .layer-switcher.shown {
@@ -94,8 +95,8 @@
     display: inline-block;
     vertical-align: top;
     float: none;
-    width: 50px;
-    height: 50px;
+    width: 16px;
+    height: 16px;
     background-position: center 2px;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAW0lEQVR4nGNgGAWMyBwXFxcGBgaGeii3EU0tXHzPnj1wQRYsihqQ+I0ExDEMQAYNONgoAN0AmMkNaDSyQSheY8JiaCMOGzE04zIAmyFYNTMw4A+DRhzsUUBtAADw4BCeIZkGdwAAAABJRU5ErkJggg==');
     -webkit-transition: -webkit-transform .2s ease-in-out;
@@ -109,7 +110,7 @@
 }
 
 li.group.layer-switcher-fold {
-    margin-left: -50px;
+    margin-left: -18px;
 }
 
 .layer-switcher .group.layer-switcher-fold > ul {
